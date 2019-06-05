@@ -66,8 +66,46 @@ function displayGif(){
         $("#FEELS").append(gifRow)
 
         })
-    }
-};
+    } else if (counter > 1 || counter < 7){
+        //Create new divs to place the gif header
+        var gifHeaderRow = $("<div>");
+            gifHeaderRow.addClass("row, gif-header-row")
+
+        var pFeels = $("<p>");
+            pFeels.html("I'm feelin: " + feels)
+
+        var titleRow =  gifHeaderRow.append(pFeels); 
+
+        $("#FEELS").append(titleRow)
+
+        //Create new divs and perform AJAX call to place 10 gifs
+        var gifRow = $("<div>");
+        gifRow.addClass("row, gif-row");
+   
+        $.ajax({ //AJAX to retrieve data from giphy API
+            url: queryURL,
+            method: "GET"
+        }).then (function(response){
+
+        for (var i = 0; i < 10; i++){ //for loop to place 10 gifs from giphy to html DOM 
+            var imageLink = response.data[i].images.fixed_height_still.url
+            console.log(imageLink)
+
+            var gif = $("<div>").attr("class","gif-" + i);
+            gif.append("<img src = ' " + imageLink + "'>")
+
+            // $("#FEELS").append(gif)
+            gifRow.append(gif)
+        }//END for loop
+
+        $("#FEELS").append(gifRow)
+
+        })
+
+    } //else {
+
+    // }
+}; //END displaygif function
 
 //Event handler: when user clicks on "inititate feels" button 
 $("#add-feels").on("click", function(event){
