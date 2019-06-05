@@ -7,6 +7,8 @@
 //bugs:***********
     //can't click to change state back to still
     //event handler on gif click doens't work for latest appearing row
+    // pop up functionality not working
+    //flush only works when there are 5 rows or less
 
 $(document).ready(function() {
 
@@ -16,10 +18,11 @@ setTimeout(function(){$("#loading-page").hide();},3000);
 setTimeout(function(){$("#expressflix-page").show();},3000);
 
 
-// $("#popup-container").hide(); 
+$("#popup").hide(); 
 
 //Create array of initial topics to display
 var initialFeels = ["chill", "mad", "weird"];
+var displayedFeels = []; 
 
 //Create initial variables
 var counter = 0; 
@@ -45,48 +48,13 @@ function displayGif(){
     counter++ //incremental increase of counter
     console.log(counter)
     var feels = $(this).attr("data-name"); //store emotion clicked on by user to the variable "feels"
+    // displayedFeels.push(feels);
     console.log(feels)
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + feels + "&api_key=" + apiKey + "&limit=10"
     console.log(apiKey) 
 
-    if (counter === 1){
-        //Create new divs to place the gif header
-        var gifHeaderRow = $("<div>");
-            gifHeaderRow.addClass("row, gif-header-row")
 
-        var pFeels = $("<p>");
-            pFeels.html("I'm feelin: " + feels)
-
-        var titleRow =  gifHeaderRow.append(pFeels); 
-
-        $("#FEELS").prepend(titleRow)
-
-        //Create new divs and perform AJAX call to place 10 gifs
-        var gifRow = $("<div>");
-            gifRow.addClass("row, gif-row");
-
-        $.ajax({ //AJAX to retrieve data from giphy API
-            url: queryURL,
-            method: "GET"
-        }).then (function(response){
-
-        for (var i = 0; i < 10; i++){ //for loop to place 10 gifs from giphy to html DOM 
-            var imageLink = response.data[i].images.fixed_height_still.url
-            var gifLink = response.data[i].images.fixed_height.url
-            console.log(imageLink)
-            console.log(gifLink)
-
-            var gif = $("<div>").attr("class","gif-" + i);
-            gif.append("<img src = ' " + imageLink + "' data-still= '" + imageLink + "' data-animate='" + gifLink + "' data-state= 'still' class = 'gifs'>")
-
-            // $("#FEELS").append(gif)
-            gifRow.append(gif)
-        }
-
-        $("#FEELS").append(gifRow)
-
-        })
-    } else if (counter > 1 && counter < 7){
+    if (counter >= 1 && counter < 7){
         //Create new divs to place the gif header
         var gifHeaderRow = $("<div>");
             gifHeaderRow.addClass("row, gif-header-row")
@@ -124,29 +92,11 @@ function displayGif(){
 
         })
 
-    } //else if (counter >= 7) {
-    //     $("#popup-container").show(); 
-    //     $("#popup-container").toggleClass("show")
-    //     console.log("popup!") 
-    // }
-
-    //Event handler: when user clicks on image --> gif 
-    $(".gifs").on("click", function(){
-        console.log("click!")
-        var state = $(".gifs").attr("data-state")
-        console.log(state)
-
-        if (state === "still"){
-            $(this).attr("data-state","animate")
-            var animateUrl = $(this).attr("data-animate")
-            $(this).attr("src", animateUrl)
-        } else if (state === "animate"){
-            $(this).attr("data-state","still")
-            var stillUrl = $(this).attr("data-still")
-            $(this).attr("src", stillUrl)
-        }
-
-    });
+    } else if (counter >= 7) {
+        $("#popup").show(); 
+        $("#popup").toggleClass("show")
+        console.log("popup!") 
+    }
 
 renderButtons();
 }; //END displaygif function
@@ -155,22 +105,40 @@ renderButtons();
 $("#add-feels").on("click", function(event){
     event.preventDefault();
     var feels = $("#feels-input").val().trim(); 
-    if(feels === ""){
+    if(feels != ""){
         console.log(feels)
         initialFeels.push(feels);
+        console.log(initialFeels)
         renderButtons();
     }
 });
 
+//Event handler: when user clicks on image --> gif 
+$("#FEELS").on("click",".gifs",function(){
+    console.log("click!")
+    var state = $(this).attr("data-state")
+    console.log(state)
+
+    if (state === "still"){
+        $(this).attr("data-state","animate")
+        var animateUrl = $(this).attr("data-animate")
+        $(this).attr("src", animateUrl)
+    } else if (state === "animate"){
+        $(this).attr("data-state","still")
+        var stillUrl = $(this).attr("data-still")
+        $(this).attr("src", stillUrl)
+    }
+})
+
 //Event handler: when user clicks on a button with the class "emotions"
 $(document).on("click",".emotion",displayGif);
-
-renderButtons();
 
 //Event handler: when user clicks flush
 $("#flush").on("click", function(){
     console.log("flush")
     $("#FEELS").empty();
 });
+
+renderButtons();
 
 }) //END: document ready

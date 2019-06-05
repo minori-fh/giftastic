@@ -4,6 +4,7 @@ body {
     width: 100vw; 
     max-width: 100%;
     max-height: 100%; 
+    position: relative; 
 }
 
 /* flexbox specifications */
@@ -86,6 +87,11 @@ input.sign:hover {
     overflow: auto; 
 }
 
+p {
+    margin-bottom: 5px; 
+    margin-top: 10px; 
+}
+
 .gif-row::-webkit-scrollbar {
     display: none; 
 }
@@ -106,14 +112,18 @@ input.sign:hover {
 /* styling for popup*/
 #popup {
     border: solid black 2px; 
-    background-color: rgb(22, 21, 21);
+    background-color: rgb(229, 9, 20); 
     font-family: 'Ramabhadra', sans-serif;
     color: white; 
     text-align: center; 
     width: 600px; 
     height: 300px; 
-    padding-top: 50px; 
-    position: relative; 
+    padding-top: 30px; 
+    position: absolute; 
+    z-index: 100; 
+    display: block; 
+    top: 50%; 
+    left: 50%; 
 }
 
 #popup.show {
@@ -126,12 +136,12 @@ input.sign:hover {
     to {opcaity: 1;}
 }
 
-#popup-container {
+/* #popup-container {
     display: flex; 
     justify-content: center; 
     z-index: 20; 
 
-}
+} */
 
 #flush {
     margin-bottom: 20px; 
@@ -142,7 +152,6 @@ input.sign:hover {
     width: 100vw;
     height: 100vh; 
     max-width: 100%; 
-    /* background-color: rgb(229, 9, 20); */
 }
 
 #loading-text, #question {
