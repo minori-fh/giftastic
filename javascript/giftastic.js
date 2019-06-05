@@ -1,6 +1,5 @@
 // edge cases:
     // can't click on the same emotion twice
-    // can't initiate feels with no input
 //functionality missing: 
     // flush button click
     // pop up functionality not working
@@ -167,5 +166,11 @@ $("#add-feels").on("click", function(event){
 $(document).on("click",".emotion",displayGif);
 
 renderButtons();
+
+//Event handler: when user clicks flush
+$("#flush").on("click", function(){
+    console.log("flush")
+    $("#FEELS").empty();
+});
 
 }) //END: document ready
