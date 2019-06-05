@@ -25,23 +25,48 @@ function renderButtons(){
 //function: display feeling gifs
 function displayGif(){
     counter++ //incremental increase of counter
+    console.log(counter)
     var feels = $(this).attr("data-name"); //store emotion clicked on by user to the variable "feels"
+    console.log(feels)
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + feels + "&api_key=" + apiKey + "&limit=10"
+    console.log(apiKey) 
 
     if (counter === 1){
-        // Create new divs to place the gif header
-        var r1 = $("<div>"); //create an empty div
-        r1.addClass("gif-header-row")
-        r1.text("I'm feeling: " + feels)
+        //Create new divs to place the gif header
+        var gifHeaderRow = $("<div>");
+            gifHeaderRow.addClass("row, gif-header-row")
 
-        $("#FEELS").prepend(r1);
+        var pFeels = $("<p>");
+            pFeels.html("I'm feelin: " + feels)
+
+        var titleRow =  gifHeaderRow.append(pFeels); 
+
+        $("#FEELS").prepend(titleRow)
+
+        //Create new divs and perform AJAX call to place 10 gifs
+        var gifRow = $("<div>");
+            gifRow.addClass("row, gif-row");
+
+        $.ajax({ //AJAX to retrieve data from giphy API
+            url: queryURL,
+            method: "GET"
+        }).then (function(response){
+
+        for (var i = 0; i < 10; i++){ //for loop to place 10 gifs from giphy to html DOM 
+            var imageLink = response.data[i].images.fixed_height_still.url
+            console.log(imageLink)
+
+            var gif = $("<div>").attr("class","gif-" + i);
+            gif.append("<img src = ' " + imageLink + "'>")
+
+            // $("#FEELS").append(gif)
+            gifRow.append(gif)
+        }
+
+        $("#FEELS").append(gifRow)
+
+        })
     }
-
-
-
-
-
-
 };
 
 //Event handler: when user clicks on "inititate feels" button 
