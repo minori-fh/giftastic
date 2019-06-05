@@ -1,5 +1,6 @@
 // edge cases:
     // can't click on the same emotion twice
+    // can't initiate feels with no input
 //functionality missing: 
     // flush button click
     // pop up functionality not working
@@ -11,6 +12,7 @@
 $(document).ready(function() {
 
 $("#loading-page").show();
+$("#expressflix-page").hide();
 setTimeout(function(){$("#loading-page").hide();},3000);
 setTimeout(function(){$("#expressflix-page").show();},3000);
 
@@ -133,6 +135,7 @@ function displayGif(){
     $(".gifs").on("click", function(){
         console.log("click!")
         var state = $(".gifs").attr("data-state")
+        console.log(state)
 
         if (state === "still"){
             $(this).attr("data-state","animate")
@@ -153,9 +156,11 @@ renderButtons();
 $("#add-feels").on("click", function(event){
     event.preventDefault();
     var feels = $("#feels-input").val().trim(); 
-    console.log(feels)
-    initialFeels.push(feels);
-    renderButtons();
+    if(feels === ""){
+        console.log(feels)
+        initialFeels.push(feels);
+        renderButtons();
+    }
 });
 
 //Event handler: when user clicks on a button with the class "emotions"
