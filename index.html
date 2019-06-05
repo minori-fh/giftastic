@@ -14,41 +14,49 @@
 </head>
 <body>
 
-<!-- Header row here -->
-<div class = "row" id = "header">
-    <div class = "column" id = "expressflix">
-        <img src = "https://fontmeme.com/permalink/190604/c5279ee8a0e5d3c7d85bec2bfb4e6fb1.png" alt = "expressflix logo" width = "250px" height = "70px">
+<section id = "loading-page">
+    <p id = "loading-text">Sometimes, words just aren't enough...</p>
+</section>
+
+<section id = "expressflix-page">
+
+    <!-- Header row here -->
+    <div class = "row" id = "header">
+        <div class = "column" id = "expressflix">
+            <img src = "https://fontmeme.com/permalink/190604/c5279ee8a0e5d3c7d85bec2bfb4e6fb1.png" alt = "expressflix logo" width = "250px" height = "70px">
+        </div>
+    <!-- Empty div to place buttons with feelings -->
+        <div class = "column" id = "feelings-bucket">
+        </div>
     </div>
-<!-- Empty div to place buttons with feelings -->
-    <div class = "column" id = "feelings-bucket">
+
+    <!-- Row for user input -->
+    <div class = "row" id = "user-input">
+        <form id="movie-form">
+            <input type="text" id="feels-input">
+            <input class = "sign" id="add-feels" type="submit" value="Initiate Feels"> <!-- Button triggers new movie to be added -->
+        </form>
+
+        <button type = "button" id = "flush">Flush</button>
+
     </div>
-</div>
 
-<!-- Row for user input -->
-<div class = "row" id = "user-input">
-    <form id="movie-form">
-        <input type="text" id="feels-input">
-        <input class = "sign" id="add-feels" type="submit" value="Initiate Feels"> <!-- Button triggers new movie to be added -->
-    </form>
-
-    <button type = "button" id = "flush">Flush</button>
-
-</div>
-
-<!-- empty div; placeholder to display gifs -->
-<div id = "FEELS">
+    <!-- empty div; placeholder to display gifs -->
+    <div id = "FEELS">
 
 
-</div>
+    </div>
 
-<!-- Popup -->
-<container id = "popup-container">
-<div id = "popup">
-    <p id = "lotsoFeelings">That's a lot of feelings! You've reached your max.</p>
-    <p id = "directions-to-clear">Click flush to clear them out.</p>
-    <button type = "button" id = "flush">Flush</button>
-</div>
-</container>
+    <!-- Popup -->
+    <!-- <container id = "popup-container">
+    <div id = "popup">
+        <p id = "lotsoFeelings">That's a lot of feelings! You've reached your max.</p>
+        <p id = "directions-to-clear">Click flush to clear them out.</p>
+        <button type = "button" id = "flush">Flush</button>
+    </div>
+    </container> -->
+
+</section>
 <!-- Link to Javascript -->
 <script src = "javascript/giftastic.js"></script>
     

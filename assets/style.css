@@ -137,6 +137,20 @@ input.sign:hover {
     margin-bottom: 20px; 
 }
 
+/* styling for loading page */
+#loading-page {
+    width: 100vw;
+    height: 100vh; 
+    max-width: 100%; 
+}
+
+#loading-text {
+    color: white; 
+    font-family: 'Ramabhadra', sans-serif;
+    font-size: 20px; 
+
+}
+
 
 
 

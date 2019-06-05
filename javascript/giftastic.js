@@ -1,6 +1,10 @@
 $(document).ready(function() {
 
-$("#popup-container").hide(); 
+
+$("#loading-page").show(); 
+$("#expressflix-page").hide();
+
+// $("#popup-container").hide(); 
 
 //Create array of initial topics to display
 var initialFeels = ["chill", "mad", "weird"];
@@ -56,10 +60,12 @@ function displayGif(){
 
         for (var i = 0; i < 10; i++){ //for loop to place 10 gifs from giphy to html DOM 
             var imageLink = response.data[i].images.fixed_height_still.url
+            var gifLink = response.data[i].images.fixed_height.url
             console.log(imageLink)
+            console.log(gifLink)
 
             var gif = $("<div>").attr("class","gif-" + i);
-            gif.append("<img src = ' " + imageLink + "'>")
+            gif.append("<img src = ' " + imageLink + "' data-still= '" + imageLink + "' data-animate='" + gifLink + "' data-state= 'still' class = 'gifs'>")
 
             // $("#FEELS").append(gif)
             gifRow.append(gif)
@@ -91,24 +97,45 @@ function displayGif(){
 
         for (var i = 0; i < 10; i++){ //for loop to place 10 gifs from giphy to html DOM 
             var imageLink = response.data[i].images.fixed_height_still.url
+            var gifLink = response.data[i].images.fixed_height.url
             console.log(imageLink)
 
             var gif = $("<div>").attr("class","gif-" + i);
-            gif.append("<img src = ' " + imageLink + "'>")
+            gif.append("<img src = ' " + imageLink + "' data-still= '" + imageLink + "' data-animate='" + gifLink + "' data-state= 'still' class = 'gifs'>")
 
             // $("#FEELS").append(gif)
             gifRow.append(gif)
+    
         }//END for loop
 
         $("#FEELS").append(gifRow)
 
         })
 
-    } else if (counter >= 7) {
-        $("#popup-container").show(); 
-        $("#popup-container").toggleClass("show")
-        console.log("popup!") 
-    }
+    } //else if (counter >= 7) {
+    //     $("#popup-container").show(); 
+    //     $("#popup-container").toggleClass("show")
+    //     console.log("popup!") 
+    // }
+
+    //Event handler: when user clicks on image --> gif 
+    $(".gifs").on("click", function(){
+        console.log("click!")
+        var state = $(".gifs").attr("data-state")
+
+        if (state === "still"){
+            $(this).attr("data-state","animate")
+            var animateUrl = $(this).attr("data-animate")
+            $(this).attr("src", animateUrl)
+        } else if (state === "animate"){
+            $(this).attr("data-state","still")
+            var stillUrl = $(this).attr("data-still")
+            $(this).attr("src", stillUrl)
+        }
+
+    });
+
+renderButtons();
 }; //END displaygif function
 
 //Event handler: when user clicks on "inititate feels" button 
