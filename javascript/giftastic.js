@@ -48,13 +48,12 @@ function displayGif(){
     counter++ //incremental increase of counter
     console.log(counter)
     var feels = $(this).attr("data-name"); //store emotion clicked on by user to the variable "feels"
-    // displayedFeels.push(feels);
     console.log(feels)
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + feels + "&api_key=" + apiKey + "&limit=10"
     console.log(apiKey) 
 
 
-    if (counter >= 1 && counter < 7){
+    if (displayedFeels.includes(feels) === false && counter >= 1 && counter < 7){
         //Create new divs to place the gif header
         var gifHeaderRow = $("<div>");
             gifHeaderRow.addClass("row, gif-header-row")
@@ -91,6 +90,8 @@ function displayGif(){
         $("#FEELS").append(gifRow)
 
         })
+
+        displayedFeels.push(feels);
 
     } else if (counter >= 7) {
         $("#popup").show(); 
