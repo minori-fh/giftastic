@@ -1,8 +1,19 @@
+// edge cases:
+    // can't click on the same emotion twice
+//functionality missing: 
+    // flush button click
+    // pop up functionality not working
+    // animations
+//bugs:***********
+    //can't click to change state back to still
+    //event handler on gif click doens't work for latest appearing row
+
 $(document).ready(function() {
 
+$("#loading-page").show();
+setTimeout(function(){$("#loading-page").hide();},3000);
+setTimeout(function(){$("#expressflix-page").show();},3000);
 
-$("#loading-page").show(); 
-$("#expressflix-page").hide();
 
 // $("#popup-container").hide(); 
 
