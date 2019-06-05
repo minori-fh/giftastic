@@ -103,4 +103,40 @@ input.sign:hover {
     margin-left: 10px; 
 }
 
+/* styling for popup*/
+#popup {
+    border: solid black 2px; 
+    background-color: rgb(22, 21, 21);
+    font-family: 'Ramabhadra', sans-serif;
+    color: white; 
+    text-align: center; 
+    width: 600px; 
+    height: 300px; 
+    padding-top: 50px; 
+    position: relative; 
+}
+
+#popup.show {
+    visibility: visible; 
+    animation: fadeIn 1s; 
+}
+
+@keyframes fadeIn {
+    from {opcaity: 0;}
+    to {opcaity: 1;}
+}
+
+#popup-container {
+    display: flex; 
+    justify-content: center; 
+    z-index: 20; 
+
+}
+
+#flush {
+    margin-bottom: 20px; 
+}
+
+
+
 

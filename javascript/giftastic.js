@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+$("#popup-container").hide(); 
+
 //Create array of initial topics to display
 var initialFeels = ["chill", "mad", "weird"];
 
@@ -66,7 +68,7 @@ function displayGif(){
         $("#FEELS").append(gifRow)
 
         })
-    } else if (counter > 1 || counter < 7){
+    } else if (counter > 1 && counter < 7){
         //Create new divs to place the gif header
         var gifHeaderRow = $("<div>");
             gifHeaderRow.addClass("row, gif-header-row")
@@ -102,9 +104,11 @@ function displayGif(){
 
         })
 
-    } //else {
-
-    // }
+    } else if (counter >= 7) {
+        $("#popup-container").show(); 
+        $("#popup-container").toggleClass("show")
+        console.log("popup!") 
+    }
 }; //END displaygif function
 
 //Event handler: when user clicks on "inititate feels" button 
