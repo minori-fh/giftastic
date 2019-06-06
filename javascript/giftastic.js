@@ -15,8 +15,8 @@ $(document).ready(function() {
 $("#overlay").hide();
 $("#loading-page").show();
 $("#expressflix-page").hide();
-setTimeout(function(){$("#loading-page").hide();},3000);
-setTimeout(function(){$("#expressflix-page").show();},3000);
+setTimeout(function(){$("#loading-page").hide();},5000);
+setTimeout(function(){$("#expressflix-page").show();},5000);
 
 
 $("#popup").hide(); 
@@ -141,6 +141,7 @@ $(".flush").on("click", function(){
     $("#FEELS").empty();
     $("#popup").hide();
     $("#overlay").hide();
+    displayedFeels = []; 
     counter = 0; 
 });
 
