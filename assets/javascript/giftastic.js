@@ -55,7 +55,7 @@ function displayGif(){
     console.log(counter)
     var feels = $(this).attr("data-name"); //store emotion clicked on by user to the variable "feels"
     console.log(feels)
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + feels + "&api_key=" + apiKey + "&limit=10"
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + feels + "&api_key=" + apiKey + "&limit=10"
     console.log(apiKey) 
 
 
