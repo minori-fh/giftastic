@@ -135,10 +135,20 @@ $("#FEELS").on("click",".gifs",function(){
 //Event handler: when user clicks on a button with the class "emotions"
 $(document).on("click",".emotion",displayGif);
 
-//Event handler: when user clicks flush
-$("#flush").on("click", function(){
+//Event handler: when user clicks flush 
+$(".flush").on("click", function(){
     console.log("flush")
     $("#FEELS").empty();
+    $("#popup").hide();
+    $("#overlay").hide();
+    counter = 0; 
+});
+
+//Event handler: when use clicks go back button on pop-up
+$("#go-back").on("click",function(){
+    $("#overlay").hide();
+    $("#popup").hide()
+
 });
 
 renderButtons();

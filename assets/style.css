@@ -46,7 +46,7 @@ input.sign:hover {
     text-decoration-color: white; 
 }
 
-#flush {
+.flush {
     background-color: rgb(28, 115, 255); 
     color: white; 
     font-size: 15px; 
@@ -125,8 +125,10 @@ p {
     z-index: 9999; 
 }
 
-#flush {
+#go-back {
     margin-bottom: 20px; 
+    background-color: rgb(56, 136, 56); 
+    color: white; 
 }
 
 #overlay {
