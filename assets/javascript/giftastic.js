@@ -15,6 +15,7 @@ $(document).ready(function() {
 $("#overlay").hide();
 $("#loading-page").show();
 $("#expressflix-page").hide();
+$("#direction").hide();
 setTimeout(function(){$("#loading-page").hide();},5000);
 setTimeout(function(){$("#expressflix-page").show();},5000);
 setTimeout(function(){$("#direction").show();},5000);
