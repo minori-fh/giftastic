@@ -58,7 +58,7 @@ input.sign:hover {
     width: 100vh; 
 }
 
-#expressflix {
+.expressflix {
     width: 200px; 
     justify-content: center; 
     margin-left: 20px; 
@@ -220,6 +220,26 @@ p {
       transform: translateY(0px);
     }
     to {
-      transform: translateY(-10px);
+      transform: translateY(-5px);
     }
   }
+
+  /* Styling for direction page */
+  #direction {
+    background-color: rgb(27, 27, 27); 
+    font-family: 'Ramabhadra', sans-serif;
+    color: white; 
+    text-align: center; 
+    width: 600px; 
+    height: 130px; 
+    z-index: 9999; 
+    position: absolute; 
+    margin-top: 200px; 
+    margin-left: 412.5px;  
+}
+
+#start {
+    background-color: rgb(28, 115, 255); 
+    color: white; 
+    font-size: 15px; 
+}

@@ -15,7 +15,7 @@
 <body>
 
 <section id = "loading-page">
-    <div class = "column" id = "expressflix">
+    <div class = "column" class = "expressflix">
         <img src = "https://fontmeme.com/permalink/190604/c5279ee8a0e5d3c7d85bec2bfb4e6fb1.png" alt = "expressflix logo" width = "250px" height = "70px">
     </div>
     <div id = "feels-profiles">
@@ -27,13 +27,24 @@
         <p id = "loading-text">Sometimes, words just aren't enough...</p>
         <p id = "question">what are you feeling?</p>
     </div>
+
 </section>
+
+<!-- Direction -->
+<div id = "direction">
+    <p>
+    Click on an emotion to generate gif (click to activate them)! <br>
+
+    Want to add your own emotion? Initiate a feel!
+    </p>
+    <button type = "button" id = "start">Start</button>
+</div>
 
 <section id = "expressflix-page">
 
     <!-- Header row here -->
     <div class = "row" id = "header">
-        <div class = "column" id = "expressflix">
+        <div class = "column" class = "expressflix">
             <img src = "https://fontmeme.com/permalink/190604/c5279ee8a0e5d3c7d85bec2bfb4e6fb1.png" alt = "expressflix logo" width = "250px" height = "70px">
         </div>
     <!-- Empty div to place buttons with feelings -->
@@ -59,7 +70,6 @@
     </div>
 
     <!-- Popup -->
-
     <div id = "popup">
         <img src = "images/chill.png">
         <p id = "lotsoFeelings">That's a lot of feelings! You've reached your max.</p>
@@ -68,8 +78,8 @@
         <button type = "button" id = "go-back">Go back</button>
     </div>
 
+    <!-- Overlay -->
     <div id = "overlay"></div>
-
 
 </section>
 <!-- Link to Javascript -->

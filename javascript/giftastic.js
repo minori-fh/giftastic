@@ -17,6 +17,10 @@ $("#loading-page").show();
 $("#expressflix-page").hide();
 setTimeout(function(){$("#loading-page").hide();},5000);
 setTimeout(function(){$("#expressflix-page").show();},5000);
+setTimeout(function(){$("#direction").show();},5000);
+setTimeout(function(){$("#overlay").show();},5000);
+
+
 
 
 $("#popup").hide(); 
@@ -145,11 +149,17 @@ $(".flush").on("click", function(){
     counter = 0; 
 });
 
-//Event handler: when use clicks go back button on pop-up
+//Event handler: when user clicks go back button on pop-up
 $("#go-back").on("click",function(){
     $("#overlay").hide();
     $("#popup").hide()
 
+});
+
+//Event handler: when user clicks to start on direction page
+$("#start").on("click",function(){
+    $("#overlay").hide();
+    $("#direction").hide();
 });
 
 renderButtons();
