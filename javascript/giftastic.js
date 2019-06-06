@@ -12,6 +12,7 @@
 
 $(document).ready(function() {
 
+$("#overlay").hide();
 $("#loading-page").show();
 $("#expressflix-page").hide();
 setTimeout(function(){$("#loading-page").hide();},3000);
@@ -95,7 +96,7 @@ function displayGif(){
 
     } else if (counter >= 7) {
         $("#popup").show(); 
-        $("#popup").toggleClass("show")
+        $("#overlay").show(); 
         console.log("popup!") 
     }
 

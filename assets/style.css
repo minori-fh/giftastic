@@ -122,27 +122,23 @@ p {
     top: 200px; 
     vertical-align: middle; 
     margin-left: 410.5px; 
+    z-index: 9999; 
 }
-
-#popup.show {
-    visibility: visible; 
-    animation: fadeIn 1s; 
-}
-
-@keyframes fadeIn {
-    from {opcaity: 0;}
-    to {opcaity: 1;}
-}
-
-/* #popup-container {
-    display: flex; 
-    justify-content: center; 
-    z-index: 20; 
-
-} */
 
 #flush {
     margin-bottom: 20px; 
+}
+
+#overlay {
+    height: 250vh; 
+    width: 100vw;
+    background-color: black; 
+    opacity: 0.8; 
+    position: absolute; 
+    left: 0px; 
+    top: 0px; 
+    bottom: 0px; 
+    overflow-y: scroll; 
 }
 
 /* styling for loading page */
