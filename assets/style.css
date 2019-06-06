@@ -152,7 +152,7 @@ p {
 }
 
 #loading-text, #question {
-    color: white; 
+    color: rgb(88, 88, 88); 
     font-family: 'Ramabhadra', sans-serif;
     font-size: 20px; 
 }
@@ -174,7 +174,7 @@ p {
     border: solid black 4px; 
 }
 
-#feels1:hover, #feels2:hover, #feels3:hover {
+/* #feels1, #feels2, #feels3 {
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
@@ -197,5 +197,28 @@ p {
     40%, 60% {
       transform: translate3d(4px, 0, 0);
     }
+  } */
+
+  #feels1 {
+    animation: bounce 0.5s infinite alternate;
+
   }
 
+  #feels2 {
+      animation: bounce 0.5s infinite alternate;
+      animation-delay: 0.25s;
+  }
+
+  #feels3 {
+    animation: bounce 0.5s infinite alternate;
+    animation-delay: 0.5s;
+}
+
+  @keyframes bounce {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-10px);
+    }
+  }
