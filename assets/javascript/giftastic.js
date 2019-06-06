@@ -21,13 +21,11 @@ setTimeout(function(){$("#expressflix-page").show();},5000);
 setTimeout(function(){$("#direction").show();},5000);
 setTimeout(function(){$("#overlay").show();},5000);
 
-
-
-
 $("#popup").hide(); 
 
 //Create array of initial topics to display
-var initialFeels = ["chill", "mad", "weird"];
+var initialFeels = ["mad", "weird"];
+var newFeels = [];
 var displayedFeels = []; 
 
 //Create initial variables
@@ -35,16 +33,27 @@ var counter = 0;
 var apiKey = "KkaHsdv8FJliwVprKPfmVBbYGteOAFef"
 
 //FUNCTION DECLARATIONS
-//function: to display initial emotion arrray as buttons
-function renderButtons(){
 
-    $("#feelings-bucket").empty();
-
+//function: render initial buttons
+function renderInitialButtons(){
     for (var i = 0; i < initialFeels.length; i++){
         var newButton = $("<button>");
         newButton.addClass("emotion");
         newButton.attr("data-name",initialFeels[i])
         newButton.text(initialFeels[i]);
+        $("#feelings-bucket-initial").append(newButton);
+    }
+}
+//function: to display initial emotion arrray as buttons
+function renderButtons(){
+
+    $("#feelings-bucket").empty();
+
+    for (var i = 0; i < newFeels.length; i++){
+        var newButton = $("<button>");
+        newButton.addClass("emotion");
+        newButton.attr("data-name",newFeels[i])
+        newButton.text(newFeels[i]);
         $("#feelings-bucket").append(newButton);
     }
 };
@@ -112,10 +121,8 @@ renderButtons();
 $("#add-feels").on("click", function(event){
     event.preventDefault();
     var feels = $("#feels-input").val().trim(); 
-    if(feels != "" && initialFeels.includes(feels) === false){
-        console.log(feels)
-        initialFeels.push(feels);
-        console.log(initialFeels)
+    if(feels != "" && newFeels.includes(feels) === false && initialFeels.includes(feels) === false){
+        newFeels.push(feels);
         renderButtons();
     }
 });
@@ -147,14 +154,15 @@ $(".flush").on("click", function(){
     $("#popup").hide();
     $("#overlay").hide();
     displayedFeels = []; 
+    newFeels = [];
     counter = 0; 
+    $("#feelings-bucket").empty();
 });
 
 //Event handler: when user clicks go back button on pop-up
 $("#go-back").on("click",function(){
     $("#overlay").hide();
     $("#popup").hide()
-
 });
 
 //Event handler: when user clicks to start on direction page
@@ -164,5 +172,6 @@ $("#start").on("click",function(){
 });
 
 renderButtons();
+renderInitialButtons();
 
 }) //END: document ready
