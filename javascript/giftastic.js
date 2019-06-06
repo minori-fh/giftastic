@@ -107,7 +107,7 @@ renderButtons();
 $("#add-feels").on("click", function(event){
     event.preventDefault();
     var feels = $("#feels-input").val().trim(); 
-    if(feels != ""){
+    if(feels != "" && initialFeels.includes(feels) === false){
         console.log(feels)
         initialFeels.push(feels);
         console.log(initialFeels)
