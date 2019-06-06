@@ -118,12 +118,10 @@ p {
     text-align: center; 
     width: 600px; 
     height: 300px; 
-    padding-top: 30px; 
     position: absolute; 
-    z-index: 100; 
-    display: block; 
-    top: 50%; 
-    left: 50%; 
+    top: 200px; 
+    vertical-align: middle; 
+    margin-left: 410.5px; 
 }
 
 #popup.show {
