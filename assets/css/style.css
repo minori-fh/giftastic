@@ -52,6 +52,10 @@ input.sign:hover {
     font-size: 15px; 
 }
 
+#flush2 {
+    background-color: rgb(0, 98, 255);
+}
+
 /* styling content above gifs*/
 #header {
     height: 100px; 
@@ -125,9 +129,11 @@ p {
     width: 600px; 
     height: 300px; 
     position: absolute; 
-    top: 200px; 
-    vertical-align: middle; 
-    margin-left: 410.5px; 
+    vertical-align: middle;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;  
+    margin-left: -300px; 
     z-index: 9999; 
 }
 
@@ -181,54 +187,29 @@ p {
     margin-top: 130px; 
 }
 
-/* #feels1, #feels2, #feels3 {
-    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
+#feels1 {
+animation: bounce 0.5s infinite alternate;
+
 }
 
-@keyframes shake {
-    10%, 90% {
-      transform: translate3d(-1px, 0, 0);
-    }
-  
-    20%, 80% {
-      transform: translate3d(2px, 0, 0);
-    }
-  
-    30%, 50%, 70% {
-      transform: translate3d(-4px, 0, 0);
-    }
-  
-    40%, 60% {
-      transform: translate3d(4px, 0, 0);
-    }
-  } */
-
-  #feels1 {
+#feels2 {
     animation: bounce 0.5s infinite alternate;
-
-  }
-
-  #feels2 {
-      animation: bounce 0.5s infinite alternate;
-      animation-delay: 0.25s;
-  }
-
-  #feels3 {
-    animation: bounce 0.5s infinite alternate;
-    animation-delay: 0.5s;
+    animation-delay: 0.25s;
 }
 
-  @keyframes bounce {
-    from {
-      transform: translateY(0px);
-    }
-    to {
-      transform: translateY(-5px);
-    }
-  }
+#feels3 {
+animation: bounce 0.5s infinite alternate;
+animation-delay: 0.5s;
+}
+
+@keyframes bounce {
+from {
+    transform: translateY(0px);
+}
+to {
+    transform: translateY(-5px);
+}
+}
 
   /* Styling for direction page */
   #direction {
@@ -240,8 +221,10 @@ p {
     height: 130px; 
     z-index: 9999; 
     position: absolute; 
-    margin-top: 200px; 
-    margin-left: 412.5px;  
+    top: 50%;
+    left: 50%; 
+    margin-top: -65px; 
+    margin-left: -300px; 
 }
 
 #start {

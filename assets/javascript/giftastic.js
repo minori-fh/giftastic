@@ -23,14 +23,11 @@ setTimeout(function(){$("#overlay").show();},5000);
 
 $("#popup").hide(); 
 
-//Create array of initial topics to display
-var initialFeels = ["mad", "weird"];
+//Create initial variables
+var apiKey = "KkaHsdv8FJliwVprKPfmVBbYGteOAFef"
+var initialFeels = ["mad", "weird"]; //Create array of initial topics to display
 var newFeels = [];
 var displayedFeels = []; 
-
-//Create initial variables
-var counter = 0; 
-var apiKey = "KkaHsdv8FJliwVprKPfmVBbYGteOAFef"
 
 //FUNCTION DECLARATIONS
 
@@ -49,26 +46,29 @@ function renderButtons(){
 
     $("#feelings-bucket").empty();
 
-    for (var i = 0; i < newFeels.length; i++){
-        var newButton = $("<button>");
-        newButton.addClass("emotion");
-        newButton.attr("data-name",newFeels[i])
-        newButton.text(newFeels[i]);
-        $("#feelings-bucket").append(newButton);
+    if (displayedFeels.length < 7){
+        for (var i = 0; i < newFeels.length; i++){
+            var newButton = $("<button>");
+            newButton.addClass("emotion");
+            newButton.attr("data-name",newFeels[i])
+            newButton.text(newFeels[i]);
+            $("#feelings-bucket").append(newButton);
+        }
+    } else {
+        $("#popup").show(); 
+        $("#overlay").show(); 
+        console.log("popup!") 
     }
+
 };
 
 //function: display feeling gifs
 function displayGif(){
-    counter++ //incremental increase of counter
-    console.log(counter)
+
     var feels = $(this).attr("data-name"); //store emotion clicked on by user to the variable "feels"
-    console.log(feels)
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + feels + "&api_key=" + apiKey + "&limit=10"
-    console.log(apiKey) 
 
-
-    if (displayedFeels.includes(feels) === false && counter >= 1 && counter < 7){
+    if (displayedFeels.length < 6 && displayedFeels.includes(feels) === false){
         //Create new divs to place the gif header
         var gifHeaderRow = $("<div>");
             gifHeaderRow.addClass("row, gif-header-row")
@@ -103,15 +103,14 @@ function displayGif(){
         }//END for loop
 
         $("#FEELS").append(gifRow)
+        displayedFeels.push(feels);
 
         })
 
-        displayedFeels.push(feels);
-
-    } else if (counter >= 7) {
+    } else if (displayedFeels.length >= 6) {
         $("#popup").show(); 
         $("#overlay").show(); 
-        console.log("popup!") 
+        console.log("wtf!") 
     }
 
 renderButtons();
@@ -155,7 +154,6 @@ $(".flush").on("click", function(){
     $("#overlay").hide();
     displayedFeels = []; 
     newFeels = [];
-    counter = 0; 
     $("#feelings-bucket").empty();
 });
 
